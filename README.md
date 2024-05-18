@@ -56,22 +56,22 @@ VTS will empower individual employees to manage their vacation time, sick leave,
 
 ## Main Use Cases
 
-### 1. [Manage Time]()
-- **Actor**: Employee
+### 1. [Manage Time](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Manage%20Time)
+- **Actor**: Employee, Manager, Hr Clerk
 - **Goal**: Submit a new vacation time request.
 - **Preconditions**: Authenticated as an employee with privileges to manage own vacation time.
 
-### 2. [Cancel Approved Request]()
+### 2. [Cancel Approved Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Cancel%20Approved%20Request)
 - **Actor**: Employee
 - **Goal**: Cancel an approved vacation time request.
 - **Preconditions**: Have an approved request scheduled within the allowable timeframe.
 
-### 3. [Edit Pending Request]()
+### 3. [Edit Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Edit%20Pending%20Request)
 - **Actor**: Employee
 - **Goal**: Edit details of a pending vacation time request.
 - **Preconditions**: Have a pending request yet to be approved or denied.
 
-### 3. [Withdraw Pending Request]()
+### 4. [Withdraw Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Withdraw%20Pending%20Request)
 - **Actor**: Employee
 - **Goal**: Withdraw a pending vacation time request.
 - **Preconditions**: Have a pending request yet to be approved or denied.
@@ -85,7 +85,7 @@ VTS will empower individual employees to manage their vacation time, sick leave,
 </p>
 
 
-The project includes diagrams such as flow charts, sequence, object, and state diagrams, along with pseudo code for use cases, to facilitate object-oriented analysis and design.
+The project includes diagrams such as flow charts, sequence, object, and state diagrams, along with [pseudo code](https://github.com/HendMuhmmad/VacationTrackingSystem/blob/master/VTSpseudoCode.txt) for use cases, to facilitate object-oriented analysis and design.
 
 For detailed analysis and design documentation, please refer to the corresponding files in the project repository.
 
