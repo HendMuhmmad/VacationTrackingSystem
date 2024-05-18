@@ -1,0 +1,122 @@
+function loadVTSHomePage(String username, String password){
+	Employee emp = authenticate(username, password)
+	List<Request> approvePendingRequest
+	List<Request>requests
+	List<Grant>grants
+	if(emp.role == RolesEnum.Manager){
+		approvePendingRequest = loadAprrovePendingRequest(emp.id)
+	}
+	requests = loadRequests()
+	grants = loadGrants()
+
+}
+
+function loadRestrictions(requestData){
+	List<Restriction> restrictions 
+	restrictions = loadLocationRestrictions(requestData.locationId)
+	restrictions.append(loadCategoryRestriction(requestData.categoryId))
+	return restrictons
+}
+
+function validateRestrictions(restrictions){
+	for(Restriction restriction:restrictions){
+		isValid = restriction.validate(requestData)
+		if(!isValid){
+			createValidationErrorRespone(restriction);
+			return false	
+		}
+	}
+	return true
+}
+
+
+
+function createVacationRequest(Request requestData){
+	List<Restriction> restrictions = loadRestrictions(requestData)
+	isvalid = validateRestrictions(restrictions)
+	if(isValid){
+		showValidationSuccessMessage()
+		saveRequest(requestData)
+		if(managerApprovalRequired(requestData.empId){
+			requestData.setStatus(StatusEnum.PENDING)
+			sendNotificationEmail(requestData.managerId)
+		}else{
+			requestData.setStatus(StatusEnum.HR_PENDING)
+			sendNotificationEmail(requestData.HRClerkID)
+		}
+
+	}	
+}
+
+function withdrawVacationRequest(Request requestData){
+	if(requestData.status != StatusEnum.PENDING){
+		return
+	}
+	confirm = showConfirmationPrompt("Are you sure you want to Withdraw this request?")
+	if(confirm){
+		requestData.setStatus(StatusEnum.WITHDRAWN)
+		updateRequest(requestData)
+		removeRequestFromManagerList(requestData)
+		sendNotificationEmail(requestData.managerId)
+		showSuccessMessage()
+	}
+}
+
+function cancelVacationRequest(Request requestData){
+	if(requestData.status != StatusEnum.APPROVED){
+		return
+	}
+	confirm = showConfirmationPrompt("Are you sure you want to Withdraw this request?")
+	if(confirm){
+		if(requestInThePast(requestData)){
+			reasons = showInputPrompt("Please Enter cancellation reasons")
+			request.setComments(reasons)
+		}
+		requestData.setStatus(StatusEnum.CANCELLED)
+		updateRequest(requestData)
+		updateGrant(requestData)
+		if(managerNotificationRequired(requestData.empId)){
+			sendNotificationEmail(requestData.managerId)
+		}
+		sendNotificationEmail(requestData.hrClerkId)
+		showSuccessMessage()
+	}
+}
+
+function editVacationRequest(Request requestData){
+	List<Restriction> restrictions = loadRestrictions(requestData)
+	isvalid = validateRestrictions(restrictions)
+	if(isValid){
+		showValidationSuccessMessage()
+		updateRequest(requestData)
+	}	
+}
+
+function managerApproveRequest(requestData, action){
+	if(action.ActionsEnum.REJECT){
+		reasons = showInputPrompt("Please Enter rejection reasons")
+		requestData.setRejectComment(reasons)
+		requestData.setStatus(StatusEnum.REJECTED)
+	}else{
+		requestData.setStatus(StatusEnum.HR_PENDING)
+	}
+	updateRequest(requestData)
+	sendNotificationEmailToEmployee()
+}
+
+function hrClerkApproveRequest(requestData, action){
+	if(action.ActionsEnum.REJECT){
+		reasons = showInputPrompt("Please Enter rejection reasons")
+		requestData.setRejectComment(reasons)
+		requestData.setStatus(StatusEnum.REJECTED)
+	}else{
+		requestData.setStatus(StatusEnum.HR_APPROVED)
+		updateGrant(requestData)
+
+	}
+	updateRequest(requestData)
+	sendNotificationEmailToEmployee()
+	if(managerNotificationRequired(requestData.empId)){
+		sendNotificationEmail(requestData.managerId)
+	}
+}
