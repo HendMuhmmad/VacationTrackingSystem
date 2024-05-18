@@ -51,6 +51,7 @@ one of the categories of vacation time with a positive balance to use.
 <p align="center">
     <img src="/Manage Time/HRFlowSequenceDiagram.png">
 </p>
+
 ## State Machine:
 
 <p align="center">
