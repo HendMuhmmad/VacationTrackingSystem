@@ -53,29 +53,8 @@ VTS will empower individual employees to manage their vacation time, sick leave,
 - Employees work eight-hour days.
 - Vacation time requests adhere to primary work location policies.
 - Validation rules for vacation time requests are defined by the HR department.
-
-## Main Use Cases
-
-### 1. [Manage Time](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Manage%20Time)
-- **Actor**: Employee, Manager, Hr Clerk
-- **Goal**: Submit a new vacation time request.
-- **Preconditions**: Authenticated as an employee with privileges to manage own vacation time.
-
-### 2. [Cancel Approved Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Cancel%20Approved%20Request)
-- **Actor**: Employee
-- **Goal**: Cancel an approved vacation time request.
-- **Preconditions**: Have an approved request scheduled within the allowable timeframe.
-
-### 3. [Edit Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Edit%20Pending%20Request)
-- **Actor**: Employee
-- **Goal**: Edit details of a pending vacation time request.
-- **Preconditions**: Have a pending request yet to be approved or denied.
-
-### 4. [Withdraw Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Withdraw%20Pending%20Request)
-- **Actor**: Employee
-- **Goal**: Withdraw a pending vacation time request.
-- **Preconditions**: Have a pending request yet to be approved or denied.
   
+
 ## Diagrams and Pseudo Code
 
 ### Entity Relationdship Diagram
@@ -84,6 +63,44 @@ VTS will empower individual employees to manage their vacation time, sick leave,
     <img src="VacationTrackingSystemERD.png">
 </p>
 
+## Main Use Cases
+
+### 1. [Manage Time](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Manage%20Time)
+- **Actor**: Employee, Manager, Hr Clerk
+- **Goal**: Submit a new vacation time request.
+- **Preconditions**: Authenticated as an employee with privileges to manage own vacation time.
+  
+  <p align="center">
+    <img src="/Manage Time/RequestVacationSequenceDiagram.png">
+  </p>
+
+### 2. [Cancel Approved Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Cancel%20Approved%20Request)
+- **Actor**: Employee
+- **Goal**: Cancel an approved vacation time request.
+- **Preconditions**: Have an approved request scheduled within the allowable timeframe.
+  
+  <p align="center">
+    <img src="/Cancel Approved Request/CancelVacationSequenceDiagram.png">
+  </p>
+
+### 3. [Edit Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Edit%20Pending%20Request)
+- **Actor**: Employee
+- **Goal**: Edit details of a pending vacation time request.
+- **Preconditions**: Have a pending request yet to be approved or denied.
+  
+  <p align="center">
+    <img src="/Edit Pending Request/EditRequestSequenceDiagram.png">
+  </p>
+
+### 4. [Withdraw Pending Request](https://github.com/HendMuhmmad/VacationTrackingSystem/tree/master/Withdraw%20Pending%20Request)
+- **Actor**: Employee
+- **Goal**: Withdraw a pending vacation time request.
+- **Preconditions**: Have a pending request yet to be approved or denied.
+
+  <p align="center">
+      <img src="/Withdraw Pending Request/WithdrawRequestSequenceDiagram.png">
+  </p>
+  
 
 The project includes diagrams such as flow charts, sequence, object, and state diagrams, along with [pseudo code](https://github.com/HendMuhmmad/VacationTrackingSystem/blob/master/VTSpseudoCode.txt) for use cases, to facilitate object-oriented analysis and design.
 
